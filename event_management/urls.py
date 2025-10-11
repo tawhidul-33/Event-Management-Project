@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from events.views import search_event_list
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('events/',include('events.urls'))
+    path('',search_event_list,name='home'),
+    path('events/',include('events.urls')),
 ]

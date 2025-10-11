@@ -1,0 +1,123 @@
+<!-- templates/base.html -->
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Event Management</title>
+  <!-- Tailwind CDN (dev quick) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col h-auto">
+  <header>
+        <!-- Navbar -->
+        <nav class="bg-blue-400 fixed top-0 left-0 w-full shadow p-4">
+          <div class="container mx-auto flex justify-between items-center">
+            <h3 class="font-bold text-xl">EVENT MANAGEMENT</h3>
+            <div class="space-x-4">
+              <a href="{% url 'home' %}" class="hover:text-red-800">Home</a>
+              <a href="{% url 'event-list' %}" class="hover:text-red-800">Events</a>
+              <a href="{% url 'participant-list' %}" class="hover:text-red-800">Participants</a>
+              <a href="{% url 'category-list' %}" class="hover:text-red-800">Categories</a>
+              <a href="#" class="hover:text-red-800">Dashboard</a>
+            </div>
+          </div>
+        </nav>
+
+      <!--Search box-->
+      <div class="w-11/12 mx-auto mt-16 flex justify-center fixed top-0 left-0">
+          <form method="GET" class="w-full md:w-1/2 flex">
+              <input type="text" name="search" placeholder="Search by name or location..." value="{{ search_query }}"
+                class="flex-1 border border-blue-300 rounded-l px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+              <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-800">
+                  Search
+              </button>
+          </form>
+      </div>
+  </header>
+
+
+
+
+
+  <!-- Main content -->
+<main class="">
+    <div class="flex justify-center mt-28 my-4 ">
+        <img src="{% static 'img/heroimg.jpeg' %}" alt="Event Hero" class="w-5/6 h-64 rounded shadow">
+    </div>
+
+        <!--Events Items-->
+{% for event in events %}
+    <div class="w-11/12 mx-auto mb-8">
+        <table class="w-full border border-gray-300 text-left">
+            <thead class="bg-yellow-300"> 
+                <tr>
+                    <th class="p-2 border">Event Name</th>
+                    <th class="p-2 border">Category</th>
+                    <th class="p-2 border">Start Date</th>
+                    <th class="p-2 border">End Date</th>
+                    <th class="p-2 border">Time</th>
+                    <th class="p-2 border">Location</th>
+                    <th class="p-2 border text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="hover:bg-gray-100">
+                    <td class="p-2 border">{{ event.name }}</td>
+                    <td class="p-2 border">{{ event.category.name }}</td>
+                    <td class="p-2 border">{{ event.start_date }}</td>
+                    <td class="p-2 border">{{ event.end_date }}</td>
+                    <td class="p-2 border">{{ event.time }}</td>
+                    <td class="p-2 border">{{ event.location }}</td>
+                    <td class="p-2 border text-center">
+                
+                    
+                    
+                        <a href="{% url 'event-details' event.id %}" class="bg-blue-500 text-white px-2 py-1 rounded">Details</a>
+                        <a href="{% url 'event-update' event.id %}" class="bg-green-500 text-white px-2 py-1 rounded">Update</a>
+                        <a href="{% url 'participant-add' event.id %}" class="bg-yellow-500 text-white px-2 py-1 rounded">Participate</a>
+                        <a href="{% url 'event-delete' event.id %}" class="bg-red-500 text-white px-2 py-1 rounded">Delete</a>
+                      
+
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                <tr>
+                    <td colspan="7" class="text-center text-gray-500 p-4">
+                        {% if event.participant_count > 0 %}
+                            <p>Participants: {{ event.participant_count }}</p>
+                        {% else %}
+                            <p>No participants yet.</p>
+                        {% endif %}
+                    </td>
+                </tr>
+
+                    
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+{% empty %}
+    <h1 class="text-center text-gray-500 p-4 text-3xl">No Events found.</h1>
+{% endfor %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-500 shadow-inner ">
+    <div class="container  py-4 text-center text-sm text-gray-600">
+      <p> Event Management System. All rights reserved.</p>
+      <p class="mt-1">
+        Designed with by Tawhidul Islam
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

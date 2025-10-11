@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Event Management</title>
+  <!-- Tailwind CDN (dev quick) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <!-- Navbar -->
+  <nav class="bg-green-300 fixed top-0 left-0 w-full shadow p-4 mb-8">
+    <div class="container mx-auto flex justify-between items-center">
+      <h3 class="font-bold text-xl">EVENT MANAGEMENT</h3>
+      <div class="space-x-4">
+        <a href="{% url 'home' %}" class="hover:text-red-800">Home</a>
+        <a href="{% url 'event-list' %}" class="hover:text-red-800">Events</a>
+        <a href="{% url 'participant-list' %}" class="hover:text-red-800">Participants</a>
+        <a href="{% url 'category-list' %}" class="hover:text-red-800">Categories</a>
+        <a href="#" class="hover:text-red-800">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Main content -->
+  <main class="pt-8 mt-24 ">
+    <!--if event_list hit korbe-->
+     {% block event_list %}
+     
+     {% endblock event_list %}
+
+     <!--if event_details hit korbe-->
+     {% block event_details %}
+    
+     {% endblock event_details %}
+
+     <!--if creat_event hit korbe-->
+     {% block event_creat %}
+
+     {% endblock event_creat %}
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-500 shadow-inner mt-24">
+    <div class="container  py-4 text-center text-sm text-gray-600">
+      <p> Event Management System. All rights reserved.</p>
+      <p class="mt-1">
+        Designed with by Tawhidul Islam
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

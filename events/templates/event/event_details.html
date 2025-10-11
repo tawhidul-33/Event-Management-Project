@@ -1,0 +1,45 @@
+{% extends "event/event_structure.html" %}
+{% block event_details %}
+    <div class="w-10/12 mx-auto mt-10">
+    <h2 class="text-3xl font-bold mb-6 text-center">{{ event.name }}</h2>
+
+    <div class="bg-white shadow-md rounded-lg p-6 border">
+        <div class="text-3xl text-center">
+            <img class="py-8" src="" alt="IMAGE LOADING.....">
+        </div>
+        <hr class="my-4">
+         <div class="flex items-center justify-center py-8">
+             <div class="mx-8 pr-8">
+                <h3 class="text-xl font-semibold mb-2">DETAILS:</h3>
+                <p><strong>Category:</strong> {{ event.category.name }}</p>
+                <p><strong>Description:</strong> {{ event.description|default:"No description provided" }}</p>
+                <p><strong>Start Date:</strong> {{ event.start_date }}</p>
+                <p><strong>End Date:</strong> {{ event.end_date }}</p>
+                <p><strong>Time:</strong> {{ event.time|default:"Not specified" }}</p>
+                <p><strong>Location:</strong> {{ event.location }}</p>
+             </div>
+             <div class="ml-8 pl-8">
+                <h3 class="text-xl font-semibold mb-2">PARTICIPANTS:</h3>
+                {% if participants %}
+                    <ul class="list-disc list-inside">
+                        {% for participant in participants %}
+                            <li>Name: {{ participant.name }}          Email:{{ participant.email }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p> No participants registered yet </p>
+                {% endif %}
+
+                <div class="mt-6 flex gap-3">
+                    <a href="{% url 'participant-add' event.id %}" class="bg-yellow-500 text-white px-2 py-1 rounded">Participate</a>
+                    <a href="{% url 'event-update' event.id %}" class="bg-green-500 text-white px-4 py-2 rounded">Update</a>
+                    <a href="{% url 'event-delete' event.id %}" class="bg-red-600 text-white px-2 py-1 rounded">Delete</a>
+                    <a href="{% url 'event-list' %}" class="bg-gray-500 text-white px-4 py-2 rounded">Back to List</a>
+
+                </div>
+             </div>
+         </div>
+        
+    </div>
+</div>
+{% endblock event_details %}

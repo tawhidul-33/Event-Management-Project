@@ -1,0 +1,163 @@
+{% extends "event/event_structure.html" %}
+{% block event_list %}
+    <!-- stats grid -->
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+        <!-- stats cards -->
+         
+        <!-- ALL EVENT -->
+        <a href="{% url 'event-list' %}">
+        <div class="bg-white rounded-xl p-6 shadow-md ">
+            <h3 class="text-sm font-medium text-gray-500 mb-4">ALL EVENTS</h3>
+            <div class="flex justify-between ">
+                <div>
+                    <p class="text-3xl font-semibold mb-1">{{counts.total}}</p>
+                    <p class="text-sm text-gray-500">111 last month</p>
+                </div>
+                <div class=" rounded-full bg-blue-100 w-8 h-8 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-4 h-4 text-blue-600">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                    </svg> 
+
+                </div>
+            </div>
+        </div>
+       </a>
+
+        <!-- TODAYS EVENTS -->
+         <a href="{% url 'event-list' %}?type=today">
+        <div class="bg-white rounded-xl p-6 shadow-md ">
+            <h3 class="text-sm font-medium text-gray-500 mb-4">TODAYS EVENTS</h3>
+            <div class="flex justify-between ">
+                <div>
+                    <p class="text-3xl font-semibold mb-1">{{counts.today}}</p>
+                    <p class="text-sm text-gray-500">111 last month</p>
+                </div>
+                <div class=" rounded-full bg-green-100 w-8  h-8 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-6 h-6 text-green-600 ">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+
+                </div>
+            </div>
+        </div>
+        </a>
+
+        <!-- UPCOMING EVENTS -->
+        <a href="{% url 'event-list' %}?type=upcoming">
+        <div class="bg-white rounded-xl p-6 shadow-md ">
+            <h3 class="text-sm font-medium text-gray-500 mb-4">UPCOMING EVENTS</h3>
+            <div class="flex justify-between items-start ">
+                <div>
+                    <p class="text-3xl font-semibold mb-1">{{counts.upcoming}}</p>
+                    <p class="text-sm text-gray-500">111 last month</p>
+                </div>
+                <div class=" rounded-full bg-yellow-100 w-8 h-8 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-4 h-4 text-yellow-600">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+
+                </div>
+            </div>
+        </div>
+       </a>
+
+        <!-- PAST EVENTS -->
+         <a href="{% url 'event-list' %}?type=past">
+        <div class="bg-white rounded-xl p-6 shadow-md ">
+            <h3 class="text-sm font-medium text-gray-500 mb-4">PAST EVENTS</h3>
+            <div class="flex justify-between ">
+                <div>
+                    <p class="text-3xl font-semibold mb-1">{{counts.past}}</p>
+                    <p class="text-sm text-gray-500">111 last month</p>
+                </div>
+                <div class=" rounded-full bg-purple-100 w-8 h-8 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-4 h-4 text-purple-600">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        </a>
+
+    </div>
+
+
+<!--Event Creat -->
+   <div>
+    <div class=" mt-4 flex justify-center w-full space-x-2 w-1/2"> 
+      <a href="{% url 'event-creat' %}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-green-600 text-sm w-1/2 px-8 text-center">Create Event</a>
+    </div>
+  </div>
+
+    <!--Events Items-->
+{% for event in events %}
+    <div class="w-11/12 mx-auto mt-10">
+        <table class="w-full border border-gray-300 text-left">
+            <thead class="bg-yellow-300"> 
+                <tr>
+                    <th class="p-2 border">Event Name</th>
+                    <th class="p-2 border">Category</th>
+                    <th class="p-2 border">Start Date</th>
+                    <th class="p-2 border">End Date</th>
+                    <th class="p-2 border">Time</th>
+                    <th class="p-2 border">Location</th>
+                    <th class="p-2 border text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="hover:bg-gray-100">
+                    <td class="p-2 border">{{ event.name }}</td>
+                    <td class="p-2 border">{{ event.category.name }}</td>
+                    <td class="p-2 border">{{ event.start_date }}</td>
+                    <td class="p-2 border">{{ event.end_date }}</td>
+                    <td class="p-2 border">{{ event.time }}</td>
+                    <td class="p-2 border">{{ event.location }}</td>
+                    <td class="p-2 border text-center">
+                
+                    
+                    
+                        <a href="{% url 'event-details' event.id %}" class="bg-blue-500 text-white px-2 py-1 rounded">Details</a>
+                        <a href="{% url 'event-update' event.id %}" class="bg-green-500 text-white px-2 py-1 rounded">Update</a>
+                        <a href="{% url 'participant-add' event.id %}" class="bg-yellow-500 text-white px-2 py-1 rounded">Participate</a>
+                        <a href="{% url 'event-delete' event.id %}" class="bg-red-500 text-white px-2 py-1 rounded">Delete</a>
+                      
+
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                <tr>
+                    <td colspan="7" class="text-center text-gray-500 p-4">
+                        {% if event.participant_count > 0 %}
+                            <p>Participants: {{ event.participant_count }}</p>
+                        {% else %}
+                            <p>No participants yet.</p>
+                        {% endif %}
+                    </td>
+                </tr>
+
+                    
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+{% empty %}
+    <h1 class="text-center text-gray-500 p-4 text-3xl">No Events found.</h1>
+{% endfor %}
+
+{% endblock event_list %}
