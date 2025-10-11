@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'event_management.wsgi.application'
 #     }
 # }
 
-# for Postgres
+# # for Postgres
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',

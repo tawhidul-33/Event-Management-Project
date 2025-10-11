@@ -177,6 +177,9 @@ def search_event_list(request):
             Q(name__icontains=search_query) | Q(location__icontains=search_query)
         )
 
+    for event in events:
+        event.participant_count = event.participants.count()   
+
     context = {
         "events": events,
         "search_query": search_query,
